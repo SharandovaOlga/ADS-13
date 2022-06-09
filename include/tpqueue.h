@@ -20,7 +20,7 @@ class TPQueue {
   TPQueue():head(nullptr), tail(nullptr) {}
   ~TPQueue() {
     while (head)
-      pop;
+    pop;
   }
 
  private:
@@ -38,7 +38,7 @@ class TPQueue {
 template<typename T>
 void TPQueue<T>::push(const T& value) {
   ITEM *temp = head;
-  ITEM *item = craete(value);
+  ITEM *item = create(value);
   while (temp && temp->value.prior >= value.prior)
     temp = temp->next;
   if (!temp && head) {
@@ -61,18 +61,18 @@ void TPQueue<T>::push(const T& value) {
 
 template<typename T>
 T TPQueue<T>::pop() {
-  if (head) {
-    ITEM *temp = head->next;
-    if (temp)
-      temp->prev = nullptr;
-    T value = head->value;
-    delete head;
-    if (!head)
-      tail = nullptr;
-    head = temp;
-    return value;
+ if (head) {
+  ITEM *temp = head->next;
+  if (temp)
+   temp->prev = nullptr;
+  T value = head->value;
+  delete head;
+  if (!head)
+   tail = nullptr;
+  head = temp;
+  return value;
   } else {
-    throw std::string("Empty!");
+  throw std::string("Empty!");
   }
 }
 
