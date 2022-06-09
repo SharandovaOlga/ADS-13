@@ -2,16 +2,18 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
+#include<iostream>
+#include<string>
+
 template<typename T>
 class TPQueue {
-private:
+ private:
   struct ITEM {
     T value;
     ITEM *next;
     ITEM *prev;
   };
-  
-public:
+ public:
   T pop();
   void push(const T& value);
   TPQueue():head(nullptr), tail(nullptr) {}
@@ -19,7 +21,7 @@ public:
     while (head)
       pop;
   }
-private:
+ private:
   TPQueue()::ITEM *create(const T& value) {
     ITEM *item = new ITEM;
     item->value = value;
@@ -37,7 +39,7 @@ void TPQueue<T>::push(const T& value) {
   ITEM *item = craete(value);
   while (temp && temp->value.prior >= value.prior)
     temp = temp->next;
-  if (!temp && head){
+  if (!temp && head) {
     tail->next = item;
     tail->next->prev = tail;
     tail = item;
@@ -58,7 +60,7 @@ void TPQueue<T>::push(const T& value) {
 template<typename T>
 T TPQueue<T>::pop() {
   if (head) {
-    ITEM *temp =head->next;
+    ITEM *temp = head->next;
     if (temp)
       temp->prev = nullptr;
     T value = head->value;
