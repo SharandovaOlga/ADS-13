@@ -13,22 +13,24 @@ class TPQueue {
     ITEM *next;
     ITEM *prev;
   };
+
  public:
   T pop();
   void push(const T& value);
   TPQueue():head(nullptr), tail(nullptr) {}
-  TPQueue() {
+  ~TPQueue() {
     while (head)
       pop;
   }
+
  private:
-  TPQueue()::ITEM *create(const T& value) {
-    ITEM *item = new ITEM;
-    item->value = value;
-    item->next = nullptr;
-    item->prev = nullptr;
-    return item;
-  }
+    TPQueue::ITEM *create(const T& value) {
+     ITEM *item = new ITEM;
+     item->value = value;
+     item->next = nullptr;
+     item->prev = nullptr;
+     return item;
+    }
   ITEM *tail;
   ITEM *head;
 };
@@ -44,7 +46,7 @@ void TPQueue<T>::push(const T& value) {
     tail->next->prev = tail;
     tail = item;
   } else if (!temp && !head) {
-    head = tail = item:
+    head = tail = item;
   } else if (!temp->prev) {
     temp->prev = item;
     item->next = temp;
