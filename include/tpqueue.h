@@ -20,7 +20,7 @@ class TPQueue {
   TPQueue():head(nullptr), tail(nullptr) {}
   ~TPQueue() {
     while (head)
-    pop;
+    pop();
   }
 
  private:
