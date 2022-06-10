@@ -61,19 +61,18 @@ void TPQueue<T>::push(const T& value) {
 
 template<typename T>
 T TPQueue<T>::pop() {
- if (head) {
-  ITEM *temp = head->next;
-  if (temp)
-   temp->prev = nullptr;
-  T value = head->value;
-  delete head;
-  if (!head)
-   tail = nullptr;
-  head = temp;
-  return value;
-  } else {
-  throw std::string("Empty!");
-  }
+    if (head) {
+        ITEM *temp = head->next;
+        if (temp)
+          temp->prev = nullptr;
+        T value = head->value;
+        delete head;
+        if (!head) tail = nullptr;
+        head = temp;
+        return value;
+    } else {
+        throw std::string("It is Empty!");
+    }
 }
 
 struct SYM {
